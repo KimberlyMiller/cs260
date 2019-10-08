@@ -6,6 +6,7 @@ public class ArrayList {
     list.add("Gerald");
     list.add("Bob");
     list.add("Joe");
+    list.add("Gary");
     //System.out.println(list.get(2));
     //System.out.println(list.get(1));
     //System.out.println(list.get(0));
