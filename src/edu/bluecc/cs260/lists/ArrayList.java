@@ -6,15 +6,19 @@ public class ArrayList {
     list.add("Gerald");
     list.add("Bob");
     list.add("Joe");
-    list.add("Gary");
-    //System.out.println(list.get(2));
-    //System.out.println(list.get(1));
-    //System.out.println(list.get(0));
-    //System.out.println(list.size());
-    //System.out.println(list); // Gerald, Bob, Joe
-    //list.remove(1);
-    System.out.println(list.size());
-    System.out.println(list); // Gerald, Joe
+    System.out.println(list.size()); // 3
+    System.out.println(list.get(2)); // Joe
+    System.out.println(list.get(1)); // Bob
+    System.out.println(list.get(0)); /// Gerald
+    list.remove(1);
+    System.out.println(list.size()); // 2
+    System.out.println(list.get(1)); // Joe
+    System.out.println(list.get(0)); // Gerald
+    list.remove(0);
+    System.out.println(list.size()); // 1
+    System.out.println(list.get(1)); // Joe
+    list.remove(0);
+    System.out.println(list.size()); // 0
   }
 
   private String[] a = new String[1000];
@@ -50,9 +54,10 @@ public class ArrayList {
   // LOCATE(v) -> p
   public int find(String value) {
     // Linear search...
-    for (int i = 0; i <= end; i++)
-      if(a[i].equals(value))
+    for (int i = 0; i <= end; i++) {
+      if (a[i].equals(value))
         return 1;
+    }
     return -1;
   }
 
