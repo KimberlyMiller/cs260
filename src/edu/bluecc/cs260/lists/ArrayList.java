@@ -1,8 +1,11 @@
 package edu.bluecc.cs260.lists;
 
+import com.sun.org.apache.xpath.internal.operations.String;
+
 public class ArrayList {
 
   public static void main(String[] args) {
+    java.util.ArrayList lists;
     ArrayList list = new ArrayList();
     list.add("Gerald");
     list.add("Bob");
@@ -97,12 +100,12 @@ public class ArrayList {
   // TO_STRING
   // override default and return comma separated element in the list.
   public String toString() {
-    String s = "";
-    if (end <0)  // this checks before the loops to check for anything in the array
-      return s;
+    StringBuilder s = new StringBuilder();
+    if (end < 0)  // this checks before the loops to check for anything in the array
+      return "";
     for (int i = 0; i < end; i++) {
-        s = s + a[i] + ", ";
+        s.append(a[i]).append(",");
     }
-    return s + a[end];
+    return s.append(a[end]).toString();
   }
 }
