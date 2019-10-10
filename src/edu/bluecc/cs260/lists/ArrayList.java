@@ -1,7 +1,16 @@
 package edu.bluecc.cs260.lists;
 
 public class ArrayList {
+
   public static void main(String[] args) {
+    ArrayList list = new ArrayList();
+    list.add("Gerald");
+    list.add("Bob");
+    list.add("Joe");
+    System.out.println(list);
+  }
+
+  public static void testMain(String[] args) {
     ArrayList list = new ArrayList();
     list.add("Gerald");
     list.add("Bob");
@@ -16,9 +25,10 @@ public class ArrayList {
     System.out.println(list.get(0)); // Gerald
     list.remove(0);
     System.out.println(list.size()); // 1
-    System.out.println(list.get(1)); // Joe
+    System.out.println(list.get(0)); // Joe
     list.remove(0);
-    System.out.println(list.size()); // 0
+    //System.out.println(list.size()); // 0  - zero is an invalid index so it will throw an invalid index message
+    System.out.println(list);
   }
 
   private String[] a = new String[1000];
@@ -88,13 +98,11 @@ public class ArrayList {
   // override default and return comma separated element in the list.
   public String toString() {
     String s = "";
-    String temp = "";
-    for (int i = 0; i <= end; i++) {
-      temp = get(i);
-      if ( i != end)
-        temp = temp + ", ";
-      s = s + temp;
+    if (end <0)  // this checks before the loops to check for anything in the array
+      return s;
+    for (int i = 0; i < end; i++) {
+        s = s + a[i] + ", ";
     }
-    return s;
+    return s + a[end];
   }
 }
