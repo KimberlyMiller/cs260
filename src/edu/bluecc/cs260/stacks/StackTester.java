@@ -18,5 +18,6 @@ public class StackTester {
     System.out.println(stack.isEmpty());  // false
     System.out.println(stack.pop());  // B
     System.out.println(stack.isEmpty());  // true
+
   }
 }
