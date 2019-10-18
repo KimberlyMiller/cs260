@@ -4,7 +4,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 
 public class WebPage {
-
+/*
   private URL url;
   private LocalDateTime timestamp;
 
@@ -20,4 +20,6 @@ public class WebPage {
   public void setTimestamp(LocalDateTime timestamp) {
     this.timestamp = timestamp;
   }
+
+ */
 }

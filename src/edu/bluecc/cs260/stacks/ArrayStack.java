@@ -6,6 +6,7 @@ package edu.bluecc.cs260.stacks;
      * @param item - the value to be pushed onto the stack
      * @return the value
      */
+    /*
     public String push(String item) {
       a[++top} = item;
       return item;
@@ -19,6 +20,8 @@ package edu.bluecc.cs260.stacks;
      * Pops a value off the stack
      * @return the popped value
      */
+
+    /*
     public String pop() {
       return a[top--];
     }
@@ -26,6 +29,7 @@ package edu.bluecc.cs260.stacks;
      * Returns the top value without removing it
      * @return the top value
      */
+    /*
     public String peek() {
       return a[top];
     }
@@ -33,8 +37,10 @@ package edu.bluecc.cs260.stacks;
      * Tests if this stack is empty
      * @return true if the stack is empty, false otherwise
      */
+
+    /*
     public boolean isEmpty() {
       return < 0;
     }
-
+    */
 }

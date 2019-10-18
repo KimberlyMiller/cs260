@@ -1,6 +1,7 @@
 package edu.bluecc.cs260.stacks;
 
 public class StackTester {
+  /*
   public static void main(String[] args) {
     ArrayStack arrayStack = new ArrayStack();
     test(arrayStack);
@@ -20,4 +21,5 @@ public class StackTester {
     System.out.println(stack.isEmpty());  // true
 
   }
+*/
 }

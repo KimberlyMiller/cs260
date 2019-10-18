@@ -6,12 +6,12 @@ import java.net.URL;
 
 public class WebBrowser {
 
-  private static Scanner scanner = new Scanner(System.in);
+  //private static Scanner scanner = new Scanner(System.in);
 
-  public static void main(String[] args) {
+  //public static void main(String[] args) {
 
-  }
-
+  //}
+/*
   public static void run() {
     Stack<WebPage> history = new ArrayStack<>();
     //  ask the user for a web page to visit
@@ -63,5 +63,5 @@ public class WebBrowser {
     "************************************\n";
   }
 
-
+*/
 }
