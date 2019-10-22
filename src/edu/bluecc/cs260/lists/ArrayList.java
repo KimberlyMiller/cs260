@@ -3,13 +3,10 @@ package edu.bluecc.cs260.lists;
 public class ArrayList {
 
   public static void main(String[] args) {
-    java.util.ArrayList list1;
-    //list1.add("test");
+    //java.util.ArrayList list1;
     ArrayList list = new ArrayList();
-    list.add("Gerald");
-    list.add("Bob");
-    list.add("Joe");
-    System.out.println(list.size()); // 3
+    for (int i = 0; i < 1000; i++)
+      list.add("Jello");
     System.out.println(list);
   }
 
@@ -38,17 +35,26 @@ public class ArrayList {
   private String[] a = new String[1000];
   private int end = -1;
 
-
-
+/// reuse methods to help other methods.
+//  Don't rewrite the same code twice!
 
   /**
+   *
    * Appends the specified element to the end of the list
+   *
    * implements APPEND(v) in ADT LIST
    * @param value value to be appended to this list
    */
-  public void add(String value) {
-    // ++end CHANGES the number of end
-    a[++end] = value;
+  public boolean add(String value) {
+    if (a.length == end + 1)
+      return false; // false if we can't actually add it
+    a[++end] = value;  // ++end CHANGES the number of end
+    System.out.println("Added at position " + end);
+    return true;
+    // EXTRA CREDIT
+    // When the array is 20% full, add 20% to its size (resize after you add something,
+    // check to see if the array is 20 percent full. never use a static number.
+    // You have to make copies of the array to do this.
   }
 
   /**
@@ -84,8 +90,9 @@ public class ArrayList {
     return -1;
   }
 
-  public void remove(String value)
-
+  public boolean remove(String value) {
+    return false;  // if it is not in the list
+  }
 
   // DELETE (v) =>p
   // This will just move everything over one left, until you get to the index to be overritten.
@@ -93,6 +100,7 @@ public class ArrayList {
   public void remove(int index) {
     if (index > end || index < 0)
       throw new IndexOutOfBoundsException(index + " is an invalid index");
+    String value = a[index];
     for (int i = index; i < end; i++)
       a[i] = a[i+1];
     end--;
@@ -109,14 +117,13 @@ public class ArrayList {
   //public void add(int index, String val);
 
   // TO_STRING
-  // override default and return comma separated element in the list.
+// override default and return comma separated element in the list.
   public String toString() {
     StringBuilder s = new StringBuilder();
     if (end < 0)
-      return "";
-    for (int i = 0; i < end; i++) {
-      s.append(a[i]).append(",");
-    }
-    return s.append(a[end]).toString();
+      return s.toString();
+    for (int i = 0; i < end; i++)
+      s.append(a[i]).append(", ");
+    return s + a[end];
   }
 }
