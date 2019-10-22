@@ -1,9 +1,13 @@
 package edu.bluecc.cs260.lists;
+// make a note in the header of each method of which
+// ABT abstract data type it is using,
+// also make a note of java doc comment at the top, what it takes as
+// input and output - java doc comments nave /** at begining
+// because it is read by the java doc interpeted
 
 public class ArrayList {
 
   public static void main(String[] args) {
-    //java.util.ArrayList list1;
     ArrayList list = new ArrayList();
     for (int i = 0; i < 1000; i++)
       list.add("Jello");
@@ -91,13 +95,21 @@ public class ArrayList {
   }
 
   public boolean remove(String value) {
+      // first find its index and then remove it at the index. use the find
+      // method to find the first position.
+      // then call the remove method.
+      // so return true if you removed it
+      // check to see if it is in the list.
     return false;  // if it is not in the list
   }
 
   // DELETE (v) =>p
   // This will just move everything over one left, until you get to the index to be overritten.
   // return the value that's removed; throw an IndexOutOfBoundsException if the index is invalid
+ // For the assignement this is going to need to return a string
+    // so create a temp s method that it can then return.
   public void remove(int index) {
+      // insert for assignment String s = "";
     if (index > end || index < 0)
       throw new IndexOutOfBoundsException(index + " is an invalid index");
     String value = a[index];
@@ -119,11 +131,12 @@ public class ArrayList {
   // TO_STRING
 // override default and return comma separated element in the list.
   public String toString() {
-    StringBuilder s = new StringBuilder();
-    if (end < 0)
-      return s.toString();
-    for (int i = 0; i < end; i++)
-      s.append(a[i]).append(", ");
-    return s + a[end];
+      StringBuilder s = new StringBuilder();
+      if (end < 0)
+          return "";
+      for (int i = 0; i < end; i++) {
+          s.append(a[i]).append(",");
+      }
+      return s.append(a[end]).toString();
   }
 }
