@@ -5,6 +5,7 @@ package edu.bluecc.cs260.lists;
 // input and output - java doc comments nave /** at begining
 // because it is read by the java doc interpeted
 
+// public class ArrayList implements lists {  // this will add methods
 public class ArrayList {
 
   public static void main(String[] args) {
