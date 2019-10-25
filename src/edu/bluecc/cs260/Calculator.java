@@ -25,5 +25,4 @@ public interface Calculator {
    * @return a times b
    */
   public int multiply(int a, int b);
-
 }
