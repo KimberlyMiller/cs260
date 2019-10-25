@@ -36,6 +36,17 @@ public class LinkedList {
         return true;
     }
 
+    /**
+     *Implements the DELETE(v) operation of the ADT list
+     * Removes an element from the list, if it exits
+     *
+     * @param value the value to be removed
+     * @return true if the value was removed, false if it wasn't found in the list
+     */
+    public boolean remove(String value) {
+
+    }
+
     public int size() {
         return size;
     }
