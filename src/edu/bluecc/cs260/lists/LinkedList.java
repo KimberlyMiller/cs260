@@ -36,6 +36,7 @@ public class LinkedList {
         return true;
     }
 
+
     /**
      *Implements the DELETE(v) operation of the ADT list
      * Removes an element from the list, if it exits
