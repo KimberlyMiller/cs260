@@ -2,7 +2,9 @@ package edu.bluecc.cs260.lists;
 
 import java.sql.SQLOutput;
 
-public class LinkedList {
+// TODO add double linking to the mothod and then leave this comment for the instructor
+
+public class LinkedList implements List {
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
@@ -40,11 +42,18 @@ public class LinkedList {
         Node node = new Node(value);
         if (first == null)
             first =  node;
-        else
+        else {
             last.setNext(node);
+            // node.setPrev(last); // this is the is the "old" last node  // this is double-link, and add it in the other add methods, and in the other remove methods
+        }
         last =  node;
         size++;
         return true;
+    }
+
+    @Override
+    public void add(int index, String val) {
+        // TODO write this
     }
 
     /**
@@ -55,7 +64,7 @@ public class LinkedList {
      * @return true the value was removed, false if wasn't found in the list
      */
     public boolean remove(String value) {
-        Node prev = null;
+        Node prev = null; // TODO once double linking is set up remove this, because it can use the pointers from the Node object
         Node node = first;
         while (node != null) {
             if (node.getValue().equals(value)) {
@@ -64,6 +73,7 @@ public class LinkedList {
                     first = first.getNext();  // this will set the first to a value
                 } else {
                     prev.setNext(node.getNext());
+                    // node.setPrev(last); // TODO, add this, this is the is the "old" last node  // this is double-link, and add it in the other add methods, and in the other remove methods
                     // TODO handle when last note is deleted
                     //  add in something here, that will handle the variable last, it is just hanging off in space right now
                     // it is possible that the first and last thing in the list are pointing to the samething due to there being only one item in the list. You want to make sure that you handle that case (if statement) use the == equals operator
@@ -74,6 +84,12 @@ public class LinkedList {
             node = node.getNext(); // this moves the node one up to the next node
         }
         return false;  // if it is not in the list
+    }
+
+    @Override
+    public String remove(int index) {
+        // TODO write this
+        return null;
     }
 
     // DELETE(p)
@@ -98,6 +114,19 @@ public class LinkedList {
     }
 
     /**
+     * Implements LOCATE(v) → p
+     * Return the first index in the list with the given value, or -1 if it's not found
+     *
+     * @param val
+     * @return
+     */
+    @Override
+    public int find(String val) {
+        // TODO write this
+        return 0;
+    }
+
+    /**
      *
      * Implements the LOCATE(v) -> p operation of ADT LIST
      * Return the first indext in the list with the given value, or -1 if it's not found
@@ -114,6 +143,24 @@ public class LinkedList {
 
 
     public int size() {
+        // TODO write this
         return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        // TODO write this
+        return false;
+    }
+
+    @Override
+    public boolean contains(String value) {
+        // TODO write this
+        return false;
+    }
+
+    @Override
+    public void clear() {
+
     }
 }

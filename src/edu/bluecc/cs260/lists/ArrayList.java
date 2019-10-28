@@ -6,7 +6,7 @@ package edu.bluecc.cs260.lists;
 // because it is read by the java doc interpeted
 
 // public class ArrayList implements lists {  // this will add methods
-public class ArrayList {
+public class ArrayList implements List {
 
   public static void main(String[] args) {
     ArrayList list = new ArrayList();
@@ -62,6 +62,11 @@ public class ArrayList {
     // You have to make copies of the array to do this.
   }
 
+  @Override
+  public void add(int index, String val) {
+    // TODO write this
+  }
+
   /**
    *
    * Retrieve a value from the list at a given index
@@ -78,7 +83,25 @@ public class ArrayList {
 
   // LENGTH() ->
   public int size() {
+    // TODO write this
     return end + 1;
+  }
+
+  @Override
+  public boolean isEmpty() {
+    // TODO write this
+    return false;
+  }
+
+  @Override
+  public boolean contains(String value) {
+    // TODO write this
+    return false;
+  }
+
+  @Override
+  public void clear() {
+    // TODO write this
   }
 
   /** search for value in the list
@@ -116,7 +139,7 @@ public class ArrayList {
   // return the value that's removed; throw an IndexOutOfBoundsException if the index is invalid
   // For the assignement this is going to need to return a string
   // so create a temp s method that it can then return.
-  public void remove(int index) {
+  public String remove(int index) {
     // insert for assignment String s = "";
     if (index > end || index < 0)
       throw new IndexOutOfBoundsException(index + " is an invalid index");
@@ -124,6 +147,7 @@ public class ArrayList {
     for (int i = index; i < end; i++)
       a[i] = a[i+1];
     end--;
+    return value;
   }
 
   // we didn't list this as an abstract operation; try it anyway
