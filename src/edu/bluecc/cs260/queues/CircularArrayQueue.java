@@ -1,3 +1,4 @@
+/*
 package edu.bluecc.cs260.queues;
 
 import java.util.NoSuchElementException;
@@ -7,7 +8,7 @@ public class CircularArrayQueue<E> implements Queue<E> {
   // values have to match the contracts.  Only cast the data types when pulling the information at runtime.
 
   private int front = 0;
-  private int back - 0;
+  private int back = 0;
 
   @Override
   public boolean add(E value) {
@@ -18,29 +19,30 @@ public class CircularArrayQueue<E> implements Queue<E> {
     return false;
   }
 
+ */
+
   /**
    * Removes a value from the front of the queue
    *
    * @return - the removed value
    */
-  @Override
-  public E remove() {
-    if (isEmpty())
-      throw new NoSuchElementException("Queue is Empty");
-    // does something else go here?.....
-    return null;
-  }
-
-  @Override
-  public boolean isEmpty() {
-    // if the queue is empty, then front and back are the same
-    if
-    return false;
-  }
-
-  @Override
-  public boolean clear() {
-    // if the queue should be empty after this method is executed.
-    return false;
-  }
-}
+//  @Override
+//  public E remove() {
+//    if (isEmpty())
+//      throw new NoSuchElementException("Queue is Empty");
+//    // does something else go here?.....
+//    return null;
+//  }
+//
+//  @Override
+//  public boolean isEmpty() {
+//    // if the queue is empty, then front and back are the same
+//    return false;
+//  }
+//
+//  @Override
+//  public boolean clear() {
+//    // if the queue should be empty after this method is executed.
+//    return false;
+//  }
+//}

@@ -1,6 +1,6 @@
 package edu.bluecc.cs260.stacks;
 
-public interface Stack<E> {
+public interface StringStack {
   public static void main(String[] args) {
 
   }
@@ -9,19 +9,19 @@ public interface Stack<E> {
    * @param item - the value to be pushed onto the stack
    * @return the value
    */
-  public E push(E item);
+  public String push(String item);
 
   /**
    * Pops a value off the stack
    * @return the popped value
    */
-  public E pop();
+  public String pop();
 
   /**
    * Returns the top value without removing it
    * @return the top value
    */
-  public E peek();
+  public String peek();
 
   /**
    * Tests if this stack is empty

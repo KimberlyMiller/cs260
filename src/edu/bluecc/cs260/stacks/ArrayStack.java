@@ -1,8 +1,14 @@
 package edu.bluecc.cs260.stacks;
 
-  public class ArrayStack implements Stack{
+import org.omg.CORBA.Object;
 
-    private String[] a = new String[1000];
+import java.util.Arrays;
+import java.util.EmptyStackException;
+
+
+public class ArrayStack<E> implements Stack<E>{
+
+    private E[] a = (E[])new Object[100];
     private int top = -1;
 
     /**
@@ -12,8 +18,10 @@ package edu.bluecc.cs260.stacks;
      * @return the value
      */
     @Override
-    public String push(String item) {
+    public E push(E item) {
       a[++top] = item;
+      if (top > 0.8*a.length)
+        a = Arrays.copyOf(a,(int)(1.5*a.length)); // re-size the array
       return item;
     }
 
@@ -23,7 +31,9 @@ package edu.bluecc.cs260.stacks;
      * @return the popped value
      */
     @Override
-    public String pop() {
+    public E pop() {
+      if (isEmpty())
+        throw new EmptyStackException();
       return a[top--];
     }
 
@@ -33,7 +43,7 @@ package edu.bluecc.cs260.stacks;
      * @return the top value
      */
     @Override
-    public String peek() {
+    public E peek() {
       return a[top];
     }
 
