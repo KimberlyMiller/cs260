@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class StringArrayStack implements StringStack{
-  public static void main(String[] args) {
-
-  }
 
   private String[] a = new String[1000];
   private int top = -1;
