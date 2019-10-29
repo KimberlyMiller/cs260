@@ -1,40 +1,34 @@
-//package edu.bluecc.cs260.queues;
-//
-//public interface Queue<E> {
-//
-//  public static void main(String[] args) {
-//    Queue<String> q = new ArrayQueue<>();
-//    test(q);
-//  }
-//
-//  private E[] = (E[])(new Object[1000]);
-//  private int back = -1;
-//
-//  /**
-//   *
-//   */
-//  public boolean add(E value){
-//    a[++back] = value;
-//    return false;
-//  }
-//
-//  /**
-//   *
-//   */
-//  public E remove() {
-//    E value = a[0];
-//    for (int i = 0; i < back; i++)
-//      front = front + 1;
-//    back--;
-//    // System.arraycopy(a,1,a,0,back); // this is less efficent, then using the loop. This creates a whole copy of an array, just to shift everything over.
-//    return value;
-//  }
-//
-//  public boolean isEmpty() {
-//    return back < 0;
-//  }
-//
-//  public boolean clear() {
-//    back = -1;
-//  }
-//}
+package edu.bluecc.cs260.queues;
+
+public interface Queue<E> {
+
+  /**
+   * Adds an element to the queue. Returns false if the element cannot be added.
+   * @param value - the value to add
+   * @return - true if the element was added, false otherwise
+   */
+  public boolean add(E value);
+
+  /**
+   * Removes a value from the front of the queue
+   * @return - the removed value
+   */
+  public E remove();
+
+  /**
+   * Retursn the value at the front of the queue without removing it
+   * @return - the value at the front of the queue
+   */
+  public E peek();
+
+  /**
+   *
+   * @return true if this que contains no elements
+   */
+  public boolean isEmpty();
+
+  /**
+   * Clears the queue
+   */
+  public void clear();
+}
