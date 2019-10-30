@@ -17,6 +17,7 @@ public class ArrayQueue<E> implements Queue<E> {
   public boolean add(E value) {
     if (back == a.length-1) // this means array is full, the array has hit its max value
       return false;
+    // remember this back pre-incrementing will NOT be the same as the circular array.
     a[++back] = value; // add the element to the end of the queue. Remember back starts at -1, because we started back as -1, we wll always need to increment it by 1 inorder to be the correct index in the array. We canNOT put a value in a -1 array, it needs to be incremented by 1, so we can put the first value in index 0 of the array.
     return true;
   }

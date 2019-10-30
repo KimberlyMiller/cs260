@@ -2,6 +2,9 @@ package edu.bluecc.cs260.queues;
 
 public class QueueTester {
 
+  // when testing the circular array... have it print the indexes to see when and if they are looping back on themselves, like from index 10 to index 0
+
+
   public static void main(String[] args) {
     Queue<String> q = new ArrayQueue<>();
     test(q);

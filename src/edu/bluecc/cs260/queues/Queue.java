@@ -23,7 +23,7 @@ public interface Queue<E> {
 
   /**
    *
-   * @return true if this que contains no elements
+   * @return true if this queue contains no elements
    */
   public boolean isEmpty();
 
