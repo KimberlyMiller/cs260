@@ -1,11 +1,5 @@
 package edu.bluecc.cs260.lists;
-// make a note in the header of each method of which
-// ABT abstract data type it is using,
-// also make a note of java doc comment at the top, what it takes as
-// input and output - java doc comments nave /** at begining
-// because it is read by the java doc interpeted
 
-// public class ArrayList implements lists {  // this will add methods
 public class ArrayList implements List {
 
   public static void main(String[] args) {
@@ -40,20 +34,48 @@ public class ArrayList implements List {
   private String[] a = new String[1000];
   private int end = -1;
 
-/// reuse methods to help other methods.
-//  Don't rewrite the same code twice!
+  /**
+   * Retrieve a value from the list at a given index
+   * Implements RETRIEVE(p) → v
+   *
+   * @param index
+   * @return the element at the given index
+   */
+  @Override
+  public String get(int index) {
+    if (index < 0 || index > end)    // this checks to see if this index is out of bounds
+      throw new IndexOutOfBoundsException(index + " is an invalid index");
+    return a[index];
+  }
 
   /**
+   * Search for value in the list
+   * Implements LOCATE(v) → p
    *
-   * Appends the specified element to the end of the list
-   *
-   * implements APPEND(v) in ADT LIST
-   * @param value value to be appended to this list
+   * @param val
+   * @return the first index in the list with the given value, or -1 if it's not found
    */
-  public boolean add(String value) {
+  @Override
+  public int find(String val) {
+    for (int i = 0; i <= end; i++) {
+      if (a[i].equals(val))
+        return 1;
+    }
+    return -1;
+  }
+
+  /**
+   * Appends the specified element to the end of the list
+   * Implements APPEND(v)
+   *
+   * @param val
+   * @return true if the element is successfully added, false if the list is full
+   */
+  @Override
+  public boolean add(String val) {
     if (a.length == end + 1)
       return false; // false if we can't actually add it
-    a[++end] = value;  // ++end CHANGES the number of end
+    a[++end] = val;  // ++end CHANGES the number of end
     System.out.println("Added at position " + end);
     return true;
     // EXTRA CREDIT
@@ -62,70 +84,27 @@ public class ArrayList implements List {
     // You have to make copies of the array to do this.
   }
 
+  /**
+   * Throw an IndexOutOfBoundsException if the index is invalid
+   * Implements INSERT(p,v)
+   *
+   * @param index and val
+   * @return
+   */
   @Override
   public void add(int index, String val) {
     // TODO write this
   }
 
   /**
-   *
-   * Retrieve a value from the list at a given index
-   * implements RETRIEVE(p) -> v (value) in ADT LIST
-   *
-   * @param index the index in the list; 0 is first index
-   * @return the value at the given index
-   */
-  public String get(int index) {
-    if (index < 0 || index > end)    // this checks to see if this index is out of bounds
-      throw new IndexOutOfBoundsException(index + " is an invalid index");
-    return a[index];
-  }
-
-  // LENGTH() ->
-  public int size() {
-    // TODO write this
-    return end + 1;
-  }
-
-  @Override
-  public boolean isEmpty() {
-    // TODO write this
-    return false;
-  }
-
-  @Override
-  public boolean contains(String value) {
-    // TODO write this
-    return false;
-  }
-
-  @Override
-  public void clear() {
-    // TODO write this
-  }
-
-  /** search for value in the list
-   * return the index when it is first found, or -1 if not in the list
-   * @param value value to search for
-   * @return index or -1 if not found
-   */
-  // LOCATE(v) -> p   looks for a value, and returns a position index value that is in the array
-  public int find(String value) {
-    for (int i = 0; i <= end; i++) {
-      if (a[i].equals(value))
-        return 1;
-    }
-    return -1;
-  }
-
-  /**
-   * Implements the DELETE(v) operation of ADT LIST
    * Removes the first occurrence of the given value from the list, if it exists
+   * Implements DELETE(v)
    *
-   * @param value the values to be removed
+   * @param val
    * @return true the value was removed, false if wasn't found in the list
    */
-  public boolean remove(String value) {
+  @Override
+  public boolean remove(String val) {
     // TODO first find its index and then remove it at the index. use the find
     // method to find the first position.
     // then call the remove method.
@@ -134,11 +113,14 @@ public class ArrayList implements List {
     return false;  // if it is not in the list
   }
 
-  // DELETE (v) =>p
-  // This will just move everything over one left, until you get to the index to be overritten.
-  // return the value that's removed; throw an IndexOutOfBoundsException if the index is invalid
-  // For the assignement this is going to need to return a string
-  // so create a temp s method that it can then return.
+  /**
+   * return the value that's removed; throw an IndexOutOfBoundsException if the index is invalid
+   * Implements DELETE(p)
+   *
+   * @param index
+   * @return return the value that's removed;
+   */
+  @Override
   public String remove(int index) {
     // insert for assignment String s = "";
     if (index > end || index < 0)
@@ -150,18 +132,65 @@ public class ArrayList implements List {
     return value;
   }
 
-  // we didn't list this as an abstract operation; try it anyway
-  // Return true if the list is empty, false if it's not
-  // public boolean isEmpty();
-  // DELETE_ALL()
-  // public void clear();
+  /**
+   * This method gets the value of the end variable -1 to indicate the list size
+   * Implements LENGTH() → int
+   *
+   * @param
+   * @return return the size of the list
+   */
+  @Override
+  public int size() {
+    // TODO write this // end + 1 does NOT change the number of end
+    return end + 1;
+  }
 
-  // INSERT(p,v)
-  // Throw an IndexOutOfBoundsException if the index is invalid
-  //public void add(int index, String val);
+  /**
+   * This method checks to see if the list is empty
+   * This was not in the Abstract List of Operations
+   *
+   * @param
+   * @return Return true if the list is empty, false if it's not
+   */
+  @Override
+  public boolean isEmpty() {
+    // TODO write this
+    return false;
+  }
 
-  // TO_STRING
-// override default and return comma separated element in the list.
+  /**
+   * This method checks to see if value is in the list
+   * This was not in the Abstract List of Operations
+   *
+   * @param
+   * @return Return true if the value is in the list, false if it's not
+   */
+  @Override
+  public boolean contains(String value) {
+    // TODO write this
+    return false;
+  }
+
+  /**
+   * This method checks to see if value is in the list
+   * Implements DELETE_ALL()
+   *
+   * @param
+   * @return Return true if the value is in the list, false if it's not
+   */
+  @Override
+  public void clear() {
+    // TODO write this
+  }
+
+  /**
+   * This method overrides the default toString method and return comma separated element in the list.
+   * This was not in the Abstract List of Operations
+   *
+   * @param
+   * @return comma separated element in the list
+   */
+  @Override
   public String toString() {
     StringBuilder s = new StringBuilder();
     if (end < 0)
