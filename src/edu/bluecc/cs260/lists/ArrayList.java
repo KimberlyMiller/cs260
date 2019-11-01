@@ -136,7 +136,6 @@ public class ArrayList implements List {
    * This method gets the value of the end variable -1 to indicate the list size
    * Implements LENGTH() → int
    *
-   * @param
    * @return return the size of the list
    */
   @Override
@@ -149,7 +148,6 @@ public class ArrayList implements List {
    * This method checks to see if the list is empty
    * This was not in the Abstract List of Operations
    *
-   * @param
    * @return Return true if the list is empty, false if it's not
    */
   @Override
@@ -162,7 +160,7 @@ public class ArrayList implements List {
    * This method checks to see if value is in the list
    * This was not in the Abstract List of Operations
    *
-   * @param
+   * @param value
    * @return Return true if the value is in the list, false if it's not
    */
   @Override
@@ -172,22 +170,18 @@ public class ArrayList implements List {
   }
 
   /**
-   * This method checks to see if value is in the list
+   * This method removes everything from the list
    * Implements DELETE_ALL()
-   *
-   * @param
-   * @return Return true if the value is in the list, false if it's not
    */
   @Override
   public void clear() {
-    // TODO write this
+    end = -1;
   }
 
   /**
    * This method overrides the default toString method and return comma separated element in the list.
    * This was not in the Abstract List of Operations
    *
-   * @param
    * @return comma separated element in the list
    */
   @Override
