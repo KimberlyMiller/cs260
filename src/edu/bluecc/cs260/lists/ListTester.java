@@ -4,13 +4,13 @@ public class ListTester {
 
 
   public static void main(String[] args) {
-    ArrayList arrayList = new ArrayList();
+    //ArrayList arrayList = new ArrayList();
     //test(arrayList);
-    LinkedList linkedList = new LinkedList();
+    // LinkedList linkedList = new LinkedList();
     //test(linkedList);
-    SortedDoubleLinedList sdList = new SortedDoubleLinedList();
-    test(sdList);
-    sdList.add(0,"Q");
+    // SortedDoubleLinedList sdList = new SortedDoubleLinedList();
+    // test(sdList);
+    // sdList.add(0,"Q");
   }
 
   public static void test(List list) { // this is passing the contract data type:  List.java
