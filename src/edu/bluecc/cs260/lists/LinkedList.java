@@ -6,6 +6,36 @@ public class LinkedList implements List {
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
+        // test1(list);
+        // test2(list);
+
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("Sun");
+        System.out.println(list.isEmpty());
+        System.out.println(list.size()); // 3        list.add("C");
+        list.add("Sky");
+        list.add(2,"blue");
+//        list.clear();
+//        System.out.println(list.isEmpty());
+//        System.out.println(list.size());
+//        for (int i = 0; i < list.size(); i++)
+//            System.out.println(list.get(i));
+        System.out.println(list);
+//      System.out.println(list.get(0));
+//      System.out.println(list.find("Sun"));
+    }
+
+    public static void test1(List list) {
+        System.out.println(list.size());
+        for (int i = 0; i < 3; i++)
+            list.add("Gerald");
+        System.out.println(list.size());
+        System.out.println("Done");
+    }
+
+    public static void test2(List list) {
         list.add("A");
         list.add("B");
         list.add("C");
@@ -13,15 +43,6 @@ public class LinkedList implements List {
         System.out.println(list.get(2)); // C
         System.out.println(list.get(0)); // A
         System.out.println(list.get(1)); // B
-    }
-
-    public static void testMain(String[] args) {
-        LinkedList list = new LinkedList();
-        System.out.println(list.size());
-        for (int i = 0; i < 3; i++)
-            list.add("Gerald");
-        System.out.println(list.size());
-        System.out.println("Done");
     }
 
     private Node first; // these are default to null
@@ -46,16 +67,19 @@ public class LinkedList implements List {
     }
 
     /**
-     * Return the first indext in the list with the given value, or -1 if it's not found
+     * Return the first index in the list with the given value, or -1 if it's not found
      * Implements the LOCATE(v) -> p in ADT LIST
      *
      * @param value
      * @return the index where it was found, or -1 if not in the list
      */
     public int find(String value){
-    // set a temporary pointer to the first element
-    // move the pointer until we find the value
-        // TODO write this
+        for (int i = 0; i <= size; i++) {
+            if (get(i).equals(value))
+                return i;
+            else
+                return -1;
+        }
         return -1;
     }
 
@@ -73,12 +97,12 @@ public class LinkedList implements List {
             first =  node;
         else {
             last.setNext(node);
-            // node.setPrev(last); // this is the is the "old" last node  // this is double-link, and add it in the other add methods, and in the other remove methods
         }
         last =  node;
         size++;
         return true;
     }
+
 
     /**
      * Throw an IndexOutOfBoundsException if the index is invalid
@@ -89,7 +113,27 @@ public class LinkedList implements List {
      */
     @Override
     public void add(int index, String val) {
-        // TODO write this
+        if (index >= size)
+            throw new IndexOutOfBoundsException(index + " is an invalid index");
+
+        Node nodeAdded = new Node(val);
+        Node last = null;
+        Node node = last;
+        for (int i = size+1; i > index; i--) {
+            if (find(val) == index) {
+                last.setNext(node.getNext());
+                if (last == null) {
+                    last = last.getPrev();
+                } else {
+                    last.setNext(node.getNext());
+                    node.setPrev(last);
+                }
+            }
+            last = node;  // this moves the previous variable to one ahead
+            node = last.setPrev();
+        }
+        node.setPrev(nodeAdded);
+        size++;
     }
 
     /**
@@ -100,24 +144,20 @@ public class LinkedList implements List {
      * @return true the value was removed, false if wasn't found in the list
      */
     public boolean remove(String value) {
-        Node prev = null; // TODO once double linking is set up remove this, because it can use the pointers from the Node object
+        Node prev = null;
         Node node = first;
         while (node != null) {
             if (node.getValue().equals(value)) {
                 prev.setNext(node.getNext());
-                if (prev == null) { // the value at the beginning
-                    first = first.getNext();  // this will set the first to a value
+                if (prev == null) {
+                    first = first.getNext();
                 } else {
                     prev.setNext(node.getNext());
-                    // node.setPrev(last); // TODO, add this, this is the is the "old" last node  // this is double-link, and add it in the other add methods, and in the other remove methods
-                    // TODO handle when last note is deleted
-                    //  add in something here, that will handle the variable last, it is just hanging off in space right now
-                    // it is possible that the first and last thing in the list are pointing to the samething due to there being only one item in the list. You want to make sure that you handle that case (if statement) use the == equals operator
-                }
-                return true; // return true, if the first value in the list that matched is moved
+              }
+                return true;
             }
-            prev = node;  // this moves the previous variable to one ahead
-            node = node.getNext(); // this moves the node one up to the next node
+            prev = node;
+            node = node.getNext();
         }
         return false;  // if it is not in the list
     }
@@ -181,22 +221,25 @@ public class LinkedList implements List {
     @Override
     public void clear() {
         size = -1;
-    } // TODO double check if -1 is valid
+    }
 
     /**
      * Convert the contents into a single string with values separated by commas.
+     * It's OK to have a comma at the end of the String.
      * This was not in the Abstract List of Operations
      *
      * @return comma separated element in the list
      */
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        if (end < 0)
+        String s = "";
+        if (size < 0)
             return "";
-        for (int i = 0; i < end; i++) {
-            s.append(a[i]).append(",");
+        String temp = "";
+        for (int i = 0; i < size; i++) {
+           temp = get(i) + ", ";
+           s = s + temp;
         }
-        return s.append(a[end]).toString();
+        return s;
     }
 }
