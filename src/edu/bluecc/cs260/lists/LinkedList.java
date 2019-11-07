@@ -6,43 +6,12 @@ public class LinkedList implements List {
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
-        // test1(list);
-        // test2(list);
-
         list.add("A");
         list.add("B");
         list.add("C");
         list.add("Sun");
-        System.out.println(list.isEmpty());
-        System.out.println(list.size()); // 3        list.add("C");
         list.add("Sky");
-        list.add(2,"blue");
-//        list.clear();
-//        System.out.println(list.isEmpty());
-//        System.out.println(list.size());
-//        for (int i = 0; i < list.size(); i++)
-//            System.out.println(list.get(i));
-        System.out.println(list);
-//      System.out.println(list.get(0));
-//      System.out.println(list.find("Sun"));
-    }
-
-    public static void test1(List list) {
-        System.out.println(list.size());
-        for (int i = 0; i < 3; i++)
-            list.add("Gerald");
-        System.out.println(list.size());
-        System.out.println("Done");
-    }
-
-    public static void test2(List list) {
-        list.add("A");
-        list.add("B");
-        list.add("C");
-        System.out.println(list.size()); // 3
-        System.out.println(list.get(2)); // C
-        System.out.println(list.get(0)); // A
-        System.out.println(list.get(1)); // B
+        list.add(3,"blue");
     }
 
     private Node first; // these are default to null
@@ -103,7 +72,6 @@ public class LinkedList implements List {
         return true;
     }
 
-
     /**
      * Throw an IndexOutOfBoundsException if the index is invalid
      * Implements INSERT(p,v)
@@ -113,26 +81,26 @@ public class LinkedList implements List {
      */
     @Override
     public void add(int index, String val) {
-        if (index >= size)
+        if (index < 0 || index > size+1)
             throw new IndexOutOfBoundsException(index + " is an invalid index");
 
-        Node nodeAdded = new Node(val);
-        Node last = null;
-        Node node = last;
-        for (int i = size+1; i > index; i--) {
-            if (find(val) == index) {
-                last.setNext(node.getNext());
-                if (last == null) {
-                    last = last.getPrev();
-                } else {
-                    last.setNext(node.getNext());
-                    node.setPrev(last);
-                }
+        Node node = new Node(val);
+        Node temp = first;
+        Node prev = null;
+        System.out.println(node.getValue());
+        int count = 0;
+
+        while (temp != null) {
+            count++;
+            System.out.println("temp " + temp.getValue());
+
+            if (count == index-1) {
+                System.out.println(temp.getValue() + ": " + node.getValue());
+                temp = node.getNext(); // this isn't rehooking, so all the list is lost after this
             }
-            last = node;  // this moves the previous variable to one ahead
-            node = last.setPrev();
+            prev = temp;
+            temp = temp.getNext();
         }
-        node.setPrev(nodeAdded);
         size++;
     }
 
