@@ -99,8 +99,7 @@ public class LinkedList implements List {
     }
     newNode.setNext(node.getNext());
     node.setNext(newNode);
-
-    size = size + 2;
+    size = size + 2; // TODO fix this...
   }
 
     /**
