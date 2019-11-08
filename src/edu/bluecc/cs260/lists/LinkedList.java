@@ -87,32 +87,20 @@ public class LinkedList implements List {
       throw new IndexOutOfBoundsException(index + " is an invalid index");
 
     Node newNode = new Node(val);
-    Node next = null;
     Node node = first; // temporary
 
+    int count = 0;
 
-    int count = -1;
-
-    while (node != null) {
-      count++;
-
-      if (count == index-1) {
-
-        node = newNode;
-        node.setNext(next.getNext());
-        System.out.println("address: (insert) " + node.getValue() + " " + node);
-      }
-      if (node != null) {
-        System.out.println("address: " + node.getValue() + " " + node);
-        System.out.println("getNext: " + node.getValue() + " " + node.getNext());
-      }
-      next = node;
-      node = node.getNext(); // moves it to
+    for (int i = 0; i < index-1; i++) {
+        count++;
+        node = node.getNext(); // moves it to
+        // trace: System.out.println("address: " + node.getValue() + " " + node);
+        // trace: System.out.println("getNext: " + node.getValue() + " " + node.getNext());
     }
+    newNode.setNext(node.getNext());
+    node.setNext(newNode);
 
-    size++;
-
-
+    size = size + 2;
   }
 
     /**
