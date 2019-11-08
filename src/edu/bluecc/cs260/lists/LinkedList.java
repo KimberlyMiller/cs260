@@ -12,6 +12,8 @@ public class LinkedList implements List {
         list.add("Sun");
         list.add("Sky");
         list.add(3,"blue");
+     System.out.println(list);
+
     }
 
     private Node first; // these are default to null
@@ -79,30 +81,39 @@ public class LinkedList implements List {
      * @param index and val
      * @return
      */
-    @Override
-    public void add(int index, String val) {
-        if (index < 0 || index > size+1)
-            throw new IndexOutOfBoundsException(index + " is an invalid index");
+  @Override
+  public void add(int index, String val) {
+    if (index < 0 || index >= size)
+      throw new IndexOutOfBoundsException(index + " is an invalid index");
 
-        Node node = new Node(val);
-        Node temp = first;
-        Node prev = null;
-        System.out.println(node.getValue());
-        int count = 0;
+    Node newNode = new Node(val);
+    Node next = null;
+    Node node = first; // temporary
 
-        while (temp != null) {
-            count++;
-            System.out.println("temp " + temp.getValue());
 
-            if (count == index-1) {
-                System.out.println(temp.getValue() + ": " + node.getValue());
-                temp = node.getNext(); // this isn't rehooking, so all the list is lost after this
-            }
-            prev = temp;
-            temp = temp.getNext();
-        }
-        size++;
+    int count = -1;
+
+    while (node != null) {
+      count++;
+
+      if (count == index-1) {
+
+        node = newNode;
+        node.setNext(next.getNext());
+        System.out.println("address: (insert) " + node.getValue() + " " + node);
+      }
+      if (node != null) {
+        System.out.println("address: " + node.getValue() + " " + node);
+        System.out.println("getNext: " + node.getValue() + " " + node.getNext());
+      }
+      next = node;
+      node = node.getNext(); // moves it to
     }
+
+    size++;
+
+
+  }
 
     /**
      * Removes the first occurrence of the given value from the list, if it exists
@@ -200,14 +211,23 @@ public class LinkedList implements List {
      */
     @Override
     public String toString() {
-        String s = "";
+
+      Node prev = null;
+      Node node = first;
+      String s = "";
+      String temp = "";
+
         if (size < 0)
             return "";
-        String temp = "";
-        for (int i = 0; i < size; i++) {
-           temp = get(i) + ", ";
-           s = s + temp;
-        }
-        return s;
+
+      for (int i = 0; i < size-2; i++) {
+        temp = node.getValue() + ", ";
+        s = s + temp; // trace: System.out.println(s);
+        prev = node;
+         node = node.getNext();
+      }
+      s = s + node.getValue();
+
+     return s;
     }
 }
