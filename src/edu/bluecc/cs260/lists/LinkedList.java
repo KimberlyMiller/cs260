@@ -11,9 +11,9 @@ public class LinkedList implements List {
         list.add("C");
         list.add("Sun");
         list.add("Sky");
-        list.add(3,"blue");
+        list.add(1,"blue");
+        list.remove(1);
      System.out.println(list);
-
     }
 
     private Node first; // these are default to null
@@ -83,23 +83,20 @@ public class LinkedList implements List {
      */
   @Override
   public void add(int index, String val) {
-    if (index < 0 || index >= size)
+    if (index < 0 || index > size)
       throw new IndexOutOfBoundsException(index + " is an invalid index");
-
     Node newNode = new Node(val);
     Node node = first; // temporary
-
     int count = 0;
-
-    for (int i = 0; i < index-1; i++) {
-        count++;
-        node = node.getNext(); // moves it to
-        // trace: System.out.println("address: " + node.getValue() + " " + node);
-        // trace: System.out.println("getNext: " + node.getValue() + " " + node.getNext());
+    System.out.println(index);
+    for (int i = 0; i < index-2; i++) {
+      node = node.getNext();
+      count++;
+      // trace: System.out.println("address: " + node.getValue() + " " + node); // trace: System.out.println("getNext: " + node.getValue() + " " + node.getNext());
     }
     newNode.setNext(node.getNext());
     node.setNext(newNode);
-    size = size + 2; // TODO fix this...
+    size++;
   }
 
     /**
@@ -137,7 +134,20 @@ public class LinkedList implements List {
      */
     @Override
     public String remove(int index) {
-        return null; // TODO write this for dynamic memory
+      if (index < 0 || index > size)
+        throw new IndexOutOfBoundsException(index + " is an invalid index");
+      Node newNode = new Node("");
+      Node node = first; // temporary
+      int count = 0;
+
+      for (int i = 0; i < index-2; i++) {
+        node = node.getNext();
+        count++;
+      }
+      newNode.setNext(node.getNext());
+      node.setNext(newNode);
+      size--;
+      return node.getValue();
     }
 
     /**
