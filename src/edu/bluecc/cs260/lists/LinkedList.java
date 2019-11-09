@@ -4,17 +4,7 @@ package edu.bluecc.cs260.lists;
 
 public class LinkedList implements List {
 
-    public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-        list.add("A");
-        list.add("B");
-        list.add("C");
-        list.add("Sun");
-        list.add("Sky");
-        list.add(1,"blue");
-        list.remove(1);
-     System.out.println(list);
-    }
+
 
     private Node first; // these are default to null
     private Node last; // these are default to null
@@ -87,16 +77,30 @@ public class LinkedList implements List {
       throw new IndexOutOfBoundsException(index + " is an invalid index");
     Node newNode = new Node(val);
     Node node = first; // temporary
-    int count = 0;
-    System.out.println(index);
-    for (int i = 0; i < index-2; i++) {
-      node = node.getNext();
-      count++;
+    System.out.println(node);
+    for (int i = 0; i <= index; i++) {
+      if (node == null)
+       System.out.println("test");
+
+     node = node.getNext();
       // trace: System.out.println("address: " + node.getValue() + " " + node); // trace: System.out.println("getNext: " + node.getValue() + " " + node.getNext());
     }
     newNode.setNext(node.getNext());
     node.setNext(newNode);
+
+
     size++;
+  }
+
+  public static void main(String[] args) {
+    LinkedList list = new LinkedList();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+    list.add("Sun");
+    list.add("Sky");
+    list.add(0,"blue");
+    System.out.println(list);
   }
 
     /**
@@ -139,6 +143,7 @@ public class LinkedList implements List {
       Node newNode = new Node("");
       Node node = first; // temporary
       int count = 0;
+
       for (int i = 0; i < index-2; i++) {
         node = node.getNext();
         count++;
