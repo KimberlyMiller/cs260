@@ -139,7 +139,6 @@ public class LinkedList implements List {
       Node newNode = new Node("");
       Node node = first; // temporary
       int count = 0;
-
       for (int i = 0; i < index-2; i++) {
         node = node.getNext();
         count++;
