@@ -78,10 +78,13 @@ public class LinkedList implements List {
     Node newNode = new Node(val);
     Node node = first; // temporary
     System.out.println(node);
-    for (int i = 0; i <= index; i++) {
-      if (node == null)
-       System.out.println("test");
 
+    if (node == null)
+      newNode = first;
+    else {
+      for (int i = 0; i <= index; i++) {
+        System.out.println("test " + i);
+      }
      node = node.getNext();
       // trace: System.out.println("address: " + node.getValue() + " " + node); // trace: System.out.println("getNext: " + node.getValue() + " " + node.getNext());
     }

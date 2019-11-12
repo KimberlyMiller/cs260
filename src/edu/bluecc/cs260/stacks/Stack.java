@@ -1,9 +1,7 @@
 package edu.bluecc.cs260.stacks;
 
 public interface Stack<E> {
-  public static void main(String[] args) {
 
-  }
   /**
    * Pushes a value onto the top of this stack
    * @param item - the value to be pushed onto the stack
