@@ -78,22 +78,31 @@ public class LinkedList implements List {
     Node newNode = new Node(val);
     Node node = first;
 
+
     if (index > 0)
       index = index -2;
 
-    if (index == 0) {
+      //newNode.setNext(newNode);
+      System.out.println("node: " + node.getValue() + " node: " + node);
       System.out.println("node: " + node.getValue() + " node.getNext(): " + node.getNext());
-      node.setNext(newNode);
-      newNode.setNext(node.getNext());
-
+      System.out.println("newNode: " + newNode.getValue() + " newNode: " + newNode);
       System.out.println("newNode: " + newNode.getValue() + " newNode.getNext(): " + newNode.getNext());
-    }
+
+      if (index == 0) {
+          newNode.setNext(node.getNext());
+          first = newNode;
+
+      }
 
       for (int i = 0; i < index; i++) {
         node = node.getNext();
      }
     newNode.setNext(node.getNext());
     node.setNext(newNode);
+      System.out.println("node: " + node.getValue() + " node: " + node);
+      System.out.println("node: " + node.getValue() + " node.getNext(): " + node.getNext());
+      System.out.println("newNode: " + newNode.getValue() + " newNode: " + newNode);
+      System.out.println("newNode: " + newNode.getValue() + " newNode.getNext(): " + newNode.getNext());
 
     size++;
   }
