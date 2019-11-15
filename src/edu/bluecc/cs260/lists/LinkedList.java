@@ -73,15 +73,16 @@ public class LinkedList implements List {
   */
   @Override
   public void add(int index, String val) {
-    if (index < 0 || index > size)
+    if (index < 0 || index > size+5)
       throw new IndexOutOfBoundsException(index + " is an invalid index");
     Node newNode = new Node(val);
     Node node = first;
 
     if (index == 0) { // this doesn't work but at least the first one is what is inserted at zero
       Node oldFirst = first;
+      System.out.println(oldFirst.getValue());
+      newNode = oldFirst;
       first = newNode;
-      first.setNext(oldFirst);
     }
      else if (index == 1)
       index = index - 2;
