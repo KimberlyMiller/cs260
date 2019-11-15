@@ -78,7 +78,8 @@ public class LinkedList implements List {
     Node newNode = new Node(val);
     Node node = first;
 
-    if (index == 0) { // this doesn't work but at least the first one is what is inserted at zero
+    if (index == 0) {
+        // this doesn't work but at least the first one is what is inserted at zero
       Node oldFirst = first;
       System.out.println(oldFirst.getValue());
       newNode = oldFirst;
