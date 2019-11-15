@@ -77,8 +77,9 @@ public class LinkedList implements List {
       throw new IndexOutOfBoundsException(index + " is an invalid index");
     Node newNode = new Node(val);
     Node node = first;
-    Node oldFirst = first;
+
     if (index == 0) { // this doesn't work but at least the first one is what is inserted at zero
+      Node oldFirst = first;
       first = newNode;
       first.setNext(oldFirst);
     }
