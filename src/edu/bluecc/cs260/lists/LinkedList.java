@@ -1,17 +1,10 @@
 package edu.bluecc.cs260.lists;
 
+import org.w3c.dom.ls.LSOutput;
+
 public class LinkedList implements List {
 
-  public static void main(String[] args) {
-    LinkedList list = new LinkedList();
-    list.add("A");
-    list.add("B");
-    list.add("C");
-    list.add("Sun");
-    list.add("Sky");
-    list.add(0,"blue");
-    System.out.println(list);
-  }
+
 
   private Node first;
   private Node last;
@@ -28,7 +21,7 @@ public class LinkedList implements List {
   public String get(int index) {
     if (index < 0 || index >= size)
       throw new IndexOutOfBoundsException(index + " is an invalid index");
-    Node temp =  first ;
+    Node temp =  first;
     for (int i = 0; i < index; i++)
       temp = temp.getNext();
     return temp.getValue();
@@ -84,11 +77,10 @@ public class LinkedList implements List {
       throw new IndexOutOfBoundsException(index + " is an invalid index");
     Node newNode = new Node(val);
     Node node = first;
-
+    Node oldFirst = first;
     if (index == 0) { // this doesn't work but at least the first one is what is inserted at zero
       first = newNode;
-      node = first;
-      node.setNext(newNode);
+      first.setNext(oldFirst);
     }
      else if (index == 1)
       index = index - 2;
@@ -100,12 +92,21 @@ public class LinkedList implements List {
         node = node.getNext();
      }
 
-   // newNode.setNext(node.getNext());
-  //  node.setNext(newNode);
+    newNode.setNext(node.getNext());
+    node.setNext(newNode);
 
     size++;
   }
-
+  public static void main(String[] args) {
+    LinkedList list = new LinkedList();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+    list.add("Sun");
+    list.add("Sky");
+    list.add(0,"blue");
+    System.out.println(list);
+  }
   /**
   * Removes the first occurrence of the given value from the list, if it exists
   * Implements the DELETE(v) operation of ADT LIST
@@ -215,21 +216,10 @@ public class LinkedList implements List {
   */
   @Override
   public String toString() {
-    Node prev = null;
-    Node node = first;
     String s = "";
-    String temp = "";
-
-    if (size < 0)
-      return "";
-
-    for (int i = 1; i < size+1; i++) {
-      temp = node.getValue() + ", ";
-      s = s + temp;
-      prev = node;
-      node = node.getNext();
-    }
-
+    Node i = null;
+    for (Node x = first; x != null; x = x.getNext())
+     s += x.getValue() + ", ";
     return s;
   }
 }
