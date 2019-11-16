@@ -2,6 +2,31 @@ package edu.bluecc.cs260.lists;
 
 public class LinkedList implements List {
 
+  public static void main(String[] args) {
+    LinkedList list = new LinkedList();
+    System.out.println("Empty? " + list.isEmpty()); // true
+    list.add("A");
+    list.add("B");
+    list.add("C");
+    list.add("Sun");
+    list.add("Sky");
+    list.add("Clouds");
+    System.out.println("Contains: " + list.contains("Akl")); // true
+    System.out.println(list);
+    System.out.println("size: " + list.size); // 5
+    list.add(4,"Blue");
+    System.out.println(list); // A, B, C, Sun, Blue, Sky, Clouds
+    System.out.println("Get: " + list.get(1)); // B
+    System.out.println("Find: " + list.find("Sky")); // 5
+    System.out.println("Empty? " + list.isEmpty()); // false
+    list.remove(0); // A
+    list.remove("B");
+    System.out.println(list); // C, Sun, Blue, Sky
+    list.clear();
+    System.out.println(list); // nothing....
+    System.out.println("Empty? " + list.isEmpty()); // true
+    System.out.println(list.size); // 0
+  }
   private Node first;
   private Node last;
   private int size = 0;
@@ -31,11 +56,13 @@ public class LinkedList implements List {
   * @return the index where it was found, or -1 if not in the list
   */
   public int find(String value){
+    Node node = first;
     for (int i = 0; i <= size; i++) {
+      node = node.getNext();
+      if (node == null) // this handles the Null Pointer Exception Error
+        return -1;
       if (get(i).equals(value))
         return i;
-      else
-      return -1;
     }
     return -1;
   }
@@ -98,7 +125,6 @@ public class LinkedList implements List {
   Node node = first;
   while (node != null) {
     if (node.getValue().equals(value)) {
-      prev.setNext(node.getNext());
       if (prev == null) {
         first = first.getNext();
       } else {
@@ -129,32 +155,19 @@ public class LinkedList implements List {
     Node node = first;
     int count = 0;
     while (node != null) {
-      if (index == count) {
+      if (index == 0){
+        first = first.getNext();
+        return node.getValue();
+      } else if (index == count && index > 0) {
         prev.setNext(node.getNext());
-
-        if (prev == null)
-          first = first.getNext();
-        else
-          prev.setNext(node.getNext());
       return node.getValue();
       }
       prev = node;
       node = node.getNext();
+      count++;
     }
     size--;
     return node.getValue();
-  }
-
-  public static void main(String[] args) {
-    LinkedList list = new LinkedList();
-    list.add("A");
-    list.add("B");
-    list.add("C");
-    list.add("Sun");
-    list.add("Sky");
-    list.add(0,"blue");
-    list.remove(2);
-    System.out.println(list);
   }
 
   /**
@@ -203,7 +216,8 @@ public class LinkedList implements List {
   */
   @Override
   public void clear() {
-    size = -1;
+    size = 0;
+    first = null;
   }
 
   /**
