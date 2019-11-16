@@ -1,10 +1,6 @@
 package edu.bluecc.cs260.lists;
 
-import org.w3c.dom.ls.LSOutput;
-
 public class LinkedList implements List {
-
-
 
   private Node first;
   private Node last;
@@ -52,7 +48,6 @@ public class LinkedList implements List {
   * @return true if the element is successfully added, false if the list is full
   */
   public boolean add(String value) {
-    // create new node
     Node node = new Node(value);
     if (first == null)
       first =  node;
@@ -73,43 +68,24 @@ public class LinkedList implements List {
   */
   @Override
   public void add(int index, String val) {
-    if (index < 0 || index > size+5)
+    if (index < 0 || index > size)
       throw new IndexOutOfBoundsException(index + " is an invalid index");
     Node newNode = new Node(val);
     Node node = first;
 
     if (index == 0) {
-        // this doesn't work but at least the first one is what is inserted at zero
-      Node oldFirst = first;
-      System.out.println(oldFirst.getValue());
-      newNode = oldFirst;
+      newNode.setNext(first);
       first = newNode;
+    } else {
+        for (int i = 0; i < index-1; i++) {
+          node = node.getNext();
+        }
+      newNode.setNext(node.getNext());
+      node.setNext(newNode);
     }
-     else if (index == 1)
-      index = index - 2;
-
-     else
-      index = index - 1;
-
-    for (int i = 0; i < index; i++) {
-        node = node.getNext();
-     }
-
-    newNode.setNext(node.getNext());
-    node.setNext(newNode);
-
     size++;
   }
-  public static void main(String[] args) {
-    LinkedList list = new LinkedList();
-    list.add("A");
-    list.add("B");
-    list.add("C");
-    list.add("Sun");
-    list.add("Sky");
-    list.add(0,"blue");
-    System.out.println(list);
-  }
+
   /**
   * Removes the first occurrence of the given value from the list, if it exists
   * Implements the DELETE(v) operation of ADT LIST
@@ -133,7 +109,8 @@ public class LinkedList implements List {
     prev = node;
     node = node.getNext();
     }
-    return false;  // if it is not in the list
+    size--;
+    return false;
   }
 
   /**
@@ -147,18 +124,37 @@ public class LinkedList implements List {
   public String remove(int index) {
     if (index < 0 || index > size)
       throw new IndexOutOfBoundsException(index + " is an invalid index");
-    Node newNode = new Node("");
-    Node node = first; // temporary
-    int count = 0;
 
-    for (int i = 0; i < index-2; i++) {
+    Node prev = null;
+    Node node = first;
+    int count = 0;
+    while (node != null) {
+      if (index == count) {
+        prev.setNext(node.getNext());
+
+        if (prev == null)
+          first = first.getNext();
+        else
+          prev.setNext(node.getNext());
+      return node.getValue();
+      }
+      prev = node;
       node = node.getNext();
-      count++;
     }
-    newNode.setNext(node.getNext());
-    node.setNext(newNode);
     size--;
     return node.getValue();
+  }
+
+  public static void main(String[] args) {
+    LinkedList list = new LinkedList();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+    list.add("Sun");
+    list.add("Sky");
+    list.add(0,"blue");
+    list.remove(2);
+    System.out.println(list);
   }
 
   /**

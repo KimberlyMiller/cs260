@@ -1,9 +1,13 @@
 package edu.bluecc.cs260.stacks;
 
+import java.util.EmptyStackException;
+
 public class LinkedStack<E> implements Stack<E> {
 
   public static void main(String[] args) { } // DELETE this later, it just wouldn't compile without it
   private Node<E> top; // this is what shows that they are linked together.
+  private Node<E> first;
+  private int size = 0;
 
   /**
    * Pushes a value onto the top of this stack
@@ -13,8 +17,15 @@ public class LinkedStack<E> implements Stack<E> {
    */
   @Override
   public E push(E item) {
-    // TODO write this method
-    return null;
+    Node node = new Node(item);
+    if (first == null)
+      first =  node;
+    else {
+      top.setNext(node);
+    }
+    top =  node;
+    size++;
+    return item;
   }
 
   /**
@@ -24,9 +35,14 @@ public class LinkedStack<E> implements Stack<E> {
    */
   @Override
   public E pop() {
-    // TODO write this method
+    if (isEmpty())
+      throw new EmptyStackException();
+
+    Node node = top;
+    top =  top.getNext();
+    size--;
     // think about how you move your top pointer in here to remove from the top
-    return null;
+    return top.getValue();
   }
 
   /**
@@ -36,8 +52,7 @@ public class LinkedStack<E> implements Stack<E> {
    */
   @Override
   public E peek() {
-    // TODO write this method
-    return null;
+    return top.getValue();
   }
 
   /**
@@ -47,7 +62,6 @@ public class LinkedStack<E> implements Stack<E> {
    */
   @Override
   public boolean isEmpty() {
-    // TODO write this method
-    return false;
+      return (first == null);
   }
 }
