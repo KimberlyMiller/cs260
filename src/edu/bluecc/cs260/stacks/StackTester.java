@@ -17,18 +17,28 @@ public class StackTester {
 //    ArrayStack arrayIntegerStack = new ArrayStack();
 //    testIntegerArrayStack(arrayIntegerStack);
 //
-    LinkedStack linkedStringStack = new LinkedStack();
-    testStringLinkedStack(linkedStringStack);
+   // LinkedStack linkedStringStack = new LinkedStack();
+   // testStringLinkedStack(linkedStringStack);
 //
 //    LinkedStack linkedIntegerStack = new LinkedStack();
 //    testIntegerLinkedStack(linkedIntegerStack);
+
+
+    /*
+    Nov 19 class assignment:
+    if (node.getValue() > parent.getValue())
+      parent.getValue();
+      parent.setRight(nextChild.getValue());
+    else
+      parent.setLeft(null);
+     */
   }
 
   public static void testStringLinkedStack(Stack<String> stack) {
     for (int i = 0; i < 3; i++)
       stack.push("Jello");
     System.out.println(stack.isEmpty());  // false
-   // System.out.println(stack.pop());  // Jello
+   System.out.println(stack.pop());  // Jello
    // System.out.println(stack.peek());
   //  System.out.println(stack.isEmpty());  // true
   }
