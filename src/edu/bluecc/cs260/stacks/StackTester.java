@@ -18,6 +18,7 @@ public class StackTester {
 
   LinkedStack linkedStackInteger = new LinkedStack();
   testLinkedStackInteger(linkedStackInteger);
+
   }
 
   public static void testStringStack(StringStack stack) {

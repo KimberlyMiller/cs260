@@ -34,6 +34,7 @@ public class LinkedStack<E> implements Stack<E> {
   public E pop() {
     E item = first.getValue();
     first = first.getNext();
+
     return item;
   }
 

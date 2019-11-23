@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class ArrayStack<E> implements Stack<E> {
-
     private E[] a = (E[])new Object[1000];
     private int top = -1;
 
