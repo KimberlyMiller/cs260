@@ -2,6 +2,18 @@ package edu.bluecc.cs260.lists;
 
 public class LinkedList implements List {
 
+  public static void main(String[] args) {
+    LinkedList list = new LinkedList();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+    list.add("Sun");
+    list.add("Sky");
+    list.add(0,"blue");
+    list.remove(2);
+    System.out.println(list);
+  }
+
   private Node first;
   private Node last;
   private int size = 0;
@@ -143,18 +155,6 @@ public class LinkedList implements List {
     }
     size--;
     return node.getValue();
-  }
-
-  public static void main(String[] args) {
-    LinkedList list = new LinkedList();
-    list.add("A");
-    list.add("B");
-    list.add("C");
-    list.add("Sun");
-    list.add("Sky");
-    list.add(0,"blue");
-    list.remove(2);
-    System.out.println(list);
   }
 
   /**

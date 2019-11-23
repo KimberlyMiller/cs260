@@ -5,16 +5,11 @@ import java.util.EmptyStackException;
 
 public class ArrayStack<E> implements Stack<E> {
 
-  public static void main(String[] args) {
-    ArrayStack list = new ArrayStack();
-  }
-
     private E[] a = (E[])new Object[1000];
     private int top = -1;
 
     /**
      * Pushes a value onto the top of this stack
-     *
      * @param item - the value to be pushed onto the stack
      * @return the value
      */
@@ -28,7 +23,6 @@ public class ArrayStack<E> implements Stack<E> {
 
     /**
      * Pops a value off the stack
-     *
      * @return the popped value
      */
     @Override
@@ -40,7 +34,6 @@ public class ArrayStack<E> implements Stack<E> {
 
     /**
      * Returns the top value without removing it
-     *
      * @return the top value
      */
     @Override
@@ -50,7 +43,6 @@ public class ArrayStack<E> implements Stack<E> {
 
     /**
      * Tests if this stack is empty
-     *
      * @return true if the stack is empty, false otherwise
      */
     @Override
