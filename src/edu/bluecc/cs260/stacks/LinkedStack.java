@@ -32,9 +32,11 @@ public class LinkedStack<E> implements Stack<E> {
    */
   @Override
   public E pop() {
-    E item = first.getValue();
-    first = first.getNext();
-
+    if (isEmpty())
+      throw new EmptyStackException();
+    E item = top.getValue();
+    top = top.getNext();
+    size--;
     return item;
   }
 
