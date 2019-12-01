@@ -9,12 +9,11 @@ public class ExpressionTester {
     public static void main(String[] args) {
 
         ArrayStack arrayStackExpression = new ArrayStack();
-//        System.out.println("Type an expression to validate and end with 'cancel");
-//        if (lines.equals("q")
+//      System.out.println("Type an expression to validate and end with 'cancel");
+//      if (lines.equals("q")
 //        System.out.println("this q....");
         String[] lines = StdIn.readAllLines();
         // TODO figure out how to get the file to cancel
-
 
         expressionTest(arrayStackExpression, lines);
     }
