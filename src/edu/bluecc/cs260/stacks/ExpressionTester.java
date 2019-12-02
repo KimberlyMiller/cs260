@@ -12,7 +12,31 @@ public class ExpressionTester {
 //      System.out.println("Type an expression to validate and end with 'cancel");
 //      if (lines.equals("q")
 //        System.out.println("this q....");
-        String[] lines = StdIn.readAllLines();
+
+
+
+
+        System.out.print("Command-line parameters:");
+        String[] parameters = scanner.nextLine().split("\\s+");
+
+
+
+//        System.out.print("Command-line parameters: \n");
+//        //String stop = "cancel";
+//
+//        String[] lines = StdIn.readAllLines();
+//        System.out.println(lines[0]);
+//        //while (!stop.equals("cancel")) {
+//           // System.out.println(stop);
+//            String[] expressions = new String[lines.length];
+//
+//
+//            for (int i = 0; i < lines.length; i++) {
+//                String[] parts = lines[i].split(" ");
+//                String expression = parts[0];
+//                expressions[i] = expression;
+//            }
+//        //}
         // TODO figure out how to get the file to cancel
 
         expressionTest(arrayStackExpression, lines);
@@ -30,13 +54,9 @@ public class ExpressionTester {
 //         String s = "{17(23)"; // invalid expression
 //    String s = "((([[[]]]))))"; // invalid expression
 
-        String[] expressions = new String[lines.length];
 
-        for (int i = 0; i < lines.length; i++) {
-            String[] parts = lines[i].split(" ");
-            String expression = parts[0];
-            expressions[i] = expression;
-        }
+
+
 
         String temp = "";
         int  stackWasUsed = 0;
