@@ -18,6 +18,10 @@ public class LinkedList implements List {
   private Node last;
   private int size = 0;
 
+
+  private String[] a = new String[100];
+  private int end = -1;
+
   /**
    * Retrieve a value from the list at a given index
    * Throw an IndexOutOfBoundsException if the index is invalid

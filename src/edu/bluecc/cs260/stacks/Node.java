@@ -20,4 +20,10 @@ public class Node<E> {
   public void setNext(Node<E> next) {
     this.next = next;
   }
+
+  @Override
+  public String toString() {
+    // trace: return value.toString() + "|" + next.hashCode();
+   return value.toString();
+  }
 }

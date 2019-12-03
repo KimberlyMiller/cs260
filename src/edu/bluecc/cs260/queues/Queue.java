@@ -22,8 +22,8 @@ public interface Queue<E> {
   public E peek();
 
   /**
-   *
-   * @return true if this queue contains no elements
+   * Returns true if this list contains no elements.
+   * @return true if this list contains no elements
    */
   public boolean isEmpty();
 
