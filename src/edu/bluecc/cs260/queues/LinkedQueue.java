@@ -10,10 +10,9 @@ public class LinkedQueue<E> implements Queue<E>  {
     System.out.println("test");
   }
 
-  private Node first;
-  private Node last;
+  private Node<E> first;
+  private Node<E> last;
   private int front = 0;
-  private int back = 0;
   private int end = -1;
   /**
    * Adds an element to the queue. Returns false if the element cannot be added.
@@ -21,14 +20,14 @@ public class LinkedQueue<E> implements Queue<E>  {
    * @return - true if the element was added, false otherwise
    */
   public boolean add(E value) {
-    Node node = new Node(value);
+    Node<E> node = new Node(value);
     if (first == null)
       first =  node;
     else {
       last.setNext(node);
     }
     last =  node;
-    back++;
+    end++;
     return true;
   }
 
@@ -37,8 +36,8 @@ public class LinkedQueue<E> implements Queue<E>  {
    * @return - the removed value
    */
   public E remove() {
-    Node prev = null;
-    Node node = first;
+    Node<E> prev = null;
+    Node<E> node = first;
     while (node != null) {
         prev.setNext(node.getNext());
         if (prev == null) {
@@ -50,7 +49,8 @@ public class LinkedQueue<E> implements Queue<E>  {
       prev = node;
       node = node.getNext();
     }
-    back--;
+    end--;
+    return node.getValue();
   }
 
   /**
@@ -58,10 +58,9 @@ public class LinkedQueue<E> implements Queue<E>  {
    * @return - the value at the front of the queue
    */
   public E peek() {
-    System.out.println(last.getValue());
+    Node<E> end = last;
     if (isEmpty())
       throw new NoSuchElementException("Queue is empty");
-    Node<E> end = last;
     return end.getValue();
   }
 
@@ -70,7 +69,7 @@ public class LinkedQueue<E> implements Queue<E>  {
    * @return true if this list contains no elements
    */
   public boolean isEmpty() {
-    if (front == back)
+    if (front == end)
       return true;
     return false;
   }
@@ -79,7 +78,7 @@ public class LinkedQueue<E> implements Queue<E>  {
    * Clears the queue
    */
   public void clear() {
-    back = -1;
+    end = -1;
   }
 
   /**
@@ -93,7 +92,7 @@ public class LinkedQueue<E> implements Queue<E>  {
   public String toString() {
     String s = "";
     edu.bluecc.cs260.lists.Node i = null;
-    for (Node x = first; x != null; x = x.getNext())
+    for (Node<E> x = first; x != null; x = x.getNext())
       s += x.getValue() + ", ";
     return s;
   }
