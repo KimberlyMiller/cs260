@@ -1,6 +1,5 @@
 package edu.bluecc.cs260.queues;
 
-
 import edu.bluecc.cs260.stacks.Node;
 import java.util.NoSuchElementException;
 
@@ -12,7 +11,6 @@ public class LinkedQueue<E> implements Queue<E>  {
 
   private Node<E> first;
   private Node<E> last;
-  private int front = 0;
   private int end = -1;
   /**
    * Adds an element to the queue. Returns false if the element cannot be added.
@@ -69,7 +67,7 @@ public class LinkedQueue<E> implements Queue<E>  {
    * @return true if this list contains no elements
    */
   public boolean isEmpty() {
-    if (front == end)
+    if (end <= 0)
       return true;
     return false;
   }
@@ -96,5 +94,4 @@ public class LinkedQueue<E> implements Queue<E>  {
       s += x.getValue() + ", ";
     return s;
   }
-
 }
