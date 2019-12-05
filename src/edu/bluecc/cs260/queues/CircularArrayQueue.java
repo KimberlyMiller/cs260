@@ -4,9 +4,6 @@ import java.util.NoSuchElementException;
 
 public class CircularArrayQueue<E> implements Queue<E> {
 
-  public static void main(String[] args) {
-  }
-
   private E[] a = (E[])(new Object[1000]);
   // values have to match the contracts.  Only cast the data types when pulling the information at runtime.
 
@@ -30,8 +27,23 @@ public class CircularArrayQueue<E> implements Queue<E> {
   }
 
   /**
+   * Removes a value from the front of the queue
+   * @return - the removed value
+   */
+  @Override
+  public E remove() {
+    if (isEmpty())
+      throw new NoSuchElementException("Queue is empty");
+    E value = a[front];
+    for (int i = front; i < back; i++) //loops through all the indexes that will be remaining, because we will have one less index in the queue
+      a[i] = a[i+1]; // shifts everything back
+    back--;
+    return value;
+  }
+
+  /**
+   * The front of the queue is always at index zero, we just want to know what this is.
    * Returns the value at the front of the queue without removing it
-   * the front of the queue is always at index zero, we just want to know what this is
    * @return - the value at the front of the queue
    */
   public E peek() {
@@ -41,17 +53,9 @@ public class CircularArrayQueue<E> implements Queue<E> {
   }
 
   /**
-   * @return true if this queue contains no elements
-   */
-  @Override
-  public E remove() {
-    if (isEmpty())
-      throw new NoSuchElementException("Queue is Empty");
-    return null;
-  }
-
-  /**
    * if the queue is empty, then front and back are the same
+   * Returns true if this list contains no elements.
+   * @return true if this list contains no elements
    */
   @Override
   public boolean isEmpty() {
