@@ -4,11 +4,11 @@ import java.util.NoSuchElementException;
 
 public class CircularArrayQueue<E> implements Queue<E> {
 
-  private E[] a = (E[])(new Object[1000]);
+  private E[] a = (E[])(new Object[3]);
   // values have to match the contracts.  Only cast the data types when pulling the information at runtime.
 
   private int front = 0;
-  private int back = -1;
+  private int back = 0;
 
   /**
    * Adds an element to the queue. Returns false if the queue is full.
@@ -20,9 +20,11 @@ public class CircularArrayQueue<E> implements Queue<E> {
   public boolean add(E value) {
     if (back == a.length-1)
       return false;
-    else
-      a[++back] = value;
-    back = (back + 1) % a.length;
+    a[++back] = value;
+    back++;
+      if (back > a.length - 1)
+        back = 0;
+     //  back = (back + 1) % a.length; //
     return true;
   }
 
@@ -35,8 +37,13 @@ public class CircularArrayQueue<E> implements Queue<E> {
     if (isEmpty())
       throw new NoSuchElementException("Queue is empty");
     E value = a[front];
+   // System.arraycopy(a,1,a,0,back); // alternative copy
     for (int i = front; i < back; i++) //loops through all the indexes that will be remaining, because we will have one less index in the queue
-      a[i] = a[i+1]; // shifts everything back
+    a[i] = a[i+1]; // shifts everything back
+    front++;
+    if (front > a.length - 1)
+      front = 0;
+     //  front = (front + 1 ) % a.length; //
     back--;
     return value;
   }
@@ -70,6 +77,7 @@ public class CircularArrayQueue<E> implements Queue<E> {
    */
   @Override
   public void clear() {
-    back = -1;
+    front = 0;
+    back = 0;
   }
 }
