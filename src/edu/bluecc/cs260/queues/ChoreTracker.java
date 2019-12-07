@@ -7,9 +7,9 @@ public class ChoreTracker {
   private static Scanner scanner = new Scanner(System.in);
 
   public static void main(String[] args) {
-   // Queue<String> q = new ArrayQueue<>();
+   Queue<String> q = new ArrayQueue<>();
    // Queue<String> q = new LinkedQueue<>(); // Fix this:  gets a null pointer exception when an item is removed.. // it also has nothing to get.. nothing was added to the queue
-   Queue<String> q = new CircularArrayQueue<>();
+  // Queue<String> q = new CircularArrayQueue<>();
     runProgram(q);
   }
 
@@ -36,7 +36,7 @@ public class ChoreTracker {
         } else if ("c".equalsIgnoreCase(input)) {
           System.out.println(validateYN(q,input));
         } else
-          System.out.println("* Invalid selection: " + input + "*");
+          System.out.println("* Invalid selection: " + input + " *");
       promptUser();
       input = scanner.nextLine();
     }
