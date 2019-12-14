@@ -5,7 +5,6 @@ import java.util.EmptyStackException;
 public class LinkedStack<E> implements Stack<E> {
 
   private Node<E> top; // this is what shows that they are linked together.
-  private Node<E> first;
   private int size = 0;
 
   /**
@@ -16,10 +15,10 @@ public class LinkedStack<E> implements Stack<E> {
   @Override
   public E push(E item) {
     Node node = new Node(item);
-    if (first == null)
-      first =  node;
+    if (top == null)
+      top =  node;
     else {
-      top.setNext(node);
+      node.setNext(top);
     }
     top =  node;
     size++;
@@ -55,6 +54,6 @@ public class LinkedStack<E> implements Stack<E> {
    */
   @Override
   public boolean isEmpty() {
-      return (first == null);
+      return (top == null);
   }
 }

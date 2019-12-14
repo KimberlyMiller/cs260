@@ -21,18 +21,18 @@ public class ListTester {
     list.add("B");
     list.add("C");
     list.add("Sun");
-//        System.out.println(list.isEmpty());
-//        System.out.println(list.size()); // 4
+    System.out.println(list.isEmpty()); // false
+    System.out.println(list.size()); // 4
     list.add("Sky");
     list.add(3,"blue");
-//        list.clear();
-//        System.out.println(list.isEmpty());
-//        System.out.println(list.size());
-//        for (int i = 0; i < list.size(); i++)
-//            System.out.println(list.get(i));
-//         System.out.println(list);
-//      System.out.println(list.get(0));
-//      System.out.println(list.find("Sun"));
+    System.out.println(list.size()); // 6
+// list.clear();     System.out.println(list.size()); // 0
+//     for (int i = 0; i < list.size(); i++)
+//       System.out.println(list.get(i));
+     System.out.println(list);
+     list.remove(5);
+     System.out.println(list);
+
   }
 
   public static void test(List list) { // this is passing the contract data type:  List.java

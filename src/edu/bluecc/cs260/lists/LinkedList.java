@@ -10,7 +10,7 @@ public class LinkedList implements List {
     list.add("Sun");
     list.add("Sky");
     list.add(0,"blue");
-    list.remove(2);
+    list.remove(0);
     System.out.println(list);
   }
 
@@ -145,17 +145,18 @@ public class LinkedList implements List {
     Node node = first;
     int count = 0;
     while (node != null) {
-      if (index == count) {
+      if (index == 0){
+        first = first.getNext();
+        return node.getValue();
+      } else if (index == count && index > 0) {
         prev.setNext(node.getNext());
-
-        if (prev == null)
-          first = first.getNext();
-        else
-          prev.setNext(node.getNext());
-      return node.getValue();
+        last = prev;
+        System.out.println(last.getValue());
+        return node.getValue();
       }
       prev = node;
       node = node.getNext();
+      count++;
     }
     size--;
     return node.getValue();

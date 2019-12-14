@@ -16,8 +16,8 @@ public class StackTester {
 //  LinkedStack linkedStackString = new LinkedStack();
 //  testLinkedStackString(linkedStackString);
 
-  LinkedStack linkedStackInteger = new LinkedStack();
-  testLinkedStackInteger(linkedStackInteger);
+//  LinkedStack linkedStackInteger = new LinkedStack();
+//  testLinkedStackInteger(linkedStackInteger);
 
   }
 
@@ -68,22 +68,27 @@ public class StackTester {
     stack.push("Joe");
     stack.push("Mike");
     System.out.println(stack.isEmpty());  // false
-    System.out.println(stack.peek()); // Mike
-    System.out.println(stack.pop());
-    System.out.println(stack.pop());
-    System.out.println(stack.pop());
+    System.out.println("peek " + stack.peek()); // Mike
+    System.out.println(stack.pop()); // Mike
+    System.out.println("peek " + stack.peek()); // Joe
+    System.out.println(stack.pop()); // Joe
+    System.out.println("peek " + stack.peek()); // Bob
+    System.out.println(stack.pop()); // Bob
     System.out.println(stack.isEmpty());  // true
   }
 
   public static void testLinkedStackInteger(Stack<Integer> stack) {
+    System.out.println(stack.isEmpty());  // true
     stack.push(45);
     stack.push(15);
     stack.push(102);
     System.out.println(stack.isEmpty());  // false
-    System.out.println(stack.peek()); // 102
-    System.out.println(stack.pop());
-    System.out.println(stack.pop());
-    System.out.println(stack.pop());
+    System.out.println("peek " + stack.peek()); // 102
+    System.out.println(stack.pop()); // 102
+    System.out.println("peek " + stack.peek()); // 15
+    System.out.println(stack.pop()); // 15
+    System.out.println("peek " + stack.peek()); // 45
+    System.out.println(stack.pop()); // 45
     System.out.println(stack.isEmpty());  // true
   }
 }

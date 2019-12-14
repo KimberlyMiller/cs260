@@ -11,7 +11,7 @@ public class LinkedQueue<E> implements Queue<E>  {
 
   private Node<E> first;
   private Node<E> last;
-  private int end = -1;
+
   /**
    * Adds an element to the queue. Returns false if the element cannot be added.
    * @param value - the value to add
@@ -25,7 +25,7 @@ public class LinkedQueue<E> implements Queue<E>  {
       last.setNext(node);
     }
     last =  node;
-    end++;
+
     return true;
   }
 
@@ -34,21 +34,12 @@ public class LinkedQueue<E> implements Queue<E>  {
    * @return - the removed value
    */
   public E remove() {
-    Node<E> prev = null;
-    Node<E> node = first;
-    while (node != null) {
-        prev.setNext(node.getNext());
-        if (prev == null) {
-          first = first.getNext();
-        } else {
-          prev.setNext(node.getNext());
-        }
+    if (isEmpty())
+      throw new NoSuchElementException("Queue is empty");
 
-      prev = node;
-      node = node.getNext();
-    }
-    end--;
-    return node.getValue();
+    E value = first.getValue();
+    first = first.getNext();
+    return value;
   }
 
   /**
@@ -56,10 +47,10 @@ public class LinkedQueue<E> implements Queue<E>  {
    * @return - the value at the front of the queue
    */
   public E peek() {
-    Node<E> end = last;
     if (isEmpty())
       throw new NoSuchElementException("Queue is empty");
-    return end.getValue();
+
+    return first.getValue();
   }
 
   /**
@@ -67,16 +58,16 @@ public class LinkedQueue<E> implements Queue<E>  {
    * @return true if this list contains no elements
    */
   public boolean isEmpty() {
-    if (end <= 0)
-      return true;
-    return false;
+    if (first != null)
+      return false;
+    return true;
   }
 
   /**
    * Clears the queue
    */
   public void clear() {
-    end = -1;
+    first = null;
   }
 
   /**
