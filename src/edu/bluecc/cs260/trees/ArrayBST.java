@@ -58,10 +58,9 @@ public class ArrayBST implements BinarySearchTree<Integer> {
    */
   @Override
   public boolean remove(Integer value) {
-    if ()
-    throw new UnsupportedOperationException("This operation is not allowed");
 
-
+    //throw new UnsupportedOperationException("This operation is not allowed");
+    return true;
   }
 
   /**
