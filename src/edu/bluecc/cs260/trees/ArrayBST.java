@@ -84,8 +84,6 @@ public class ArrayBST implements BinarySearchTree<Integer> {
     System.out.println("a: " + a[location]); // trace
     System.out.println("root: " + root); // trace
 
-
-
     if (value == a[location] && root == value) {
       System.out.println("This is it!! " + a[location]);  // trace
       a[location] = a[location*2+1];
