@@ -35,9 +35,7 @@ public class ArrayBST implements BinarySearchTree<Integer> {
     tree.remove(7);
     System.out.println("Contains 7?:  " + tree.contains(15)); // false
 
-    //tree.remove(150);
-
-
+    tree.remove(150);
   }
 
   private Integer[] a = new Integer[100];
