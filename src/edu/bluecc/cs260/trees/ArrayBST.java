@@ -18,24 +18,36 @@ public class ArrayBST implements BinarySearchTree<Integer> {
     System.out.println("Is empty?: " + tree.isEmpty()); // false
     System.out.println(tree.contains(7)); // true
     System.out.println(tree.contains(12)); // true
-    System.out.println(tree.contains(15)); // true
+
     System.out.println(tree.contains(-12345)); // false
     System.out.println(tree.contains(11)); // false
     System.out.println(tree.contains(-42)); // true
-    tree.remove(15);
-    tree.remove(150);
 
-    // TODO: example of removing: leaves
-    // TODO: example of removing: internal nodes
-    // TODO: example of removing: root
+    System.out.println("Contains 15?:  " + tree.contains(15)); // true
+    tree.remove(15);
+    System.out.println("Contains 15?:  " + tree.contains(15)); // false
+
+    System.out.println("Contains 12?:  " + tree.contains(15)); // true
+    tree.remove(12);
+    System.out.println("Contains 12?:  " + tree.contains(15)); // false
+
+    System.out.println("Contains 7?:  " + tree.contains(15)); // true
+    tree.remove(7);
+    System.out.println("Contains 7?:  " + tree.contains(15)); // false
+
+    //tree.remove(150);
+
+
   }
 
   private Integer[] a = new Integer[100];
+  private int root = 0;
 
   /**
    * Add a value to this tree following the BST algorithm
    * Values to the right of a node are greater than the node value
    * Values to the left of a node are less than the node value
+   *
    * @param value The value to add
    */
   @Override
@@ -46,21 +58,48 @@ public class ArrayBST implements BinarySearchTree<Integer> {
   private void add(int value, int location) {
     if (a[location] == null) {
       a[location] = value;
+      root = value;
     } else if (value > a[location])
-      add(value, 2*location+2); // go right
+      add(value, 2 * location + 2); // go right
     else if (value < a[location])
-      add(value, 2*location+1); // go left
+      add(value, 2 * location + 1); // go left
   }
 
-  /**
-   * This operation is not supported and will throw an UnsupportedOperationException
-   * @param value The value to remove
+  //This operation is not supported and will throw an UnsupportedOperationException
+   /**
+   * Remove a value to this tree following the BST algorithm
+   * Values to the right of a node are greater than the node value
+   * Values to the left of a node are less than the node value
+   *
+   * @param value The value to be removed
    */
-  @Override
   public boolean remove(Integer value) {
+    if (contains(value) == false)
+      throw new UnsupportedOperationException("This operation is not allowed");
+   else {
+      remove(value, 0);
+      return true;
+    }
+  }
 
-    //throw new UnsupportedOperationException("This operation is not allowed");
-    return true;
+  public boolean remove(int value, int location) {
+    System.out.println("a: " + a[location]); // trace
+    System.out.println("root: " + root); // trace
+
+
+
+    if (value == a[location] && root == value) {
+      System.out.println("This is it!! " + a[location]);  // trace
+      a[location] = a[location*2+1];
+      return true;
+    }
+
+     if (value > a[location]) {
+      remove(value, location*2+2); // go right
+    } else if (value < a[location]) {
+      remove(value, location*2+1); // go left
+    }
+    return false;
   }
 
   /**
