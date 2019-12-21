@@ -17,6 +17,7 @@ public class LinkedBST implements BinarySearchTree<Integer>{
     tree.add(15);
     tree.add(11);
     tree.add(18);
+    tree.add(23);
     tree.add(42);
     tree.add(17);
     tree.add(16);
@@ -24,7 +25,9 @@ public class LinkedBST implements BinarySearchTree<Integer>{
     for (int i = 0; i < 100; i++)
      tree.add(-123);
     tree.add(23);
-    tree.add(23);
+    tree.add(42);
+    tree.add(15);
+    tree.add(15);
     tree.showTree();
 //    System.out.println("Is empty?: " + tree.isEmpty()); // false
 //    System.out.println(tree.contains(15)); // true
@@ -61,21 +64,17 @@ public class LinkedBST implements BinarySearchTree<Integer>{
 
   public void add(Integer value, TreeNode<Integer> node) {
     if (value > node.getValue()) {
-      if (node.getRight() == null) {
+      if (node.getRight() == null)
         node.setRight(new TreeNode<>(value, node)); // This combines these three lines:  // TreeNode<Integer> newNode = new TreeNode<>(value); // node.setRight(newNode); // newNode.setParent(node);
-      } else {
+       else
         add(value, node.getRight()); // go right
-      }
     } else if (value < node.getValue()) {
-      if (node.getLeft() == null) {
+      if (node.getLeft() == null)
         node.setLeft(new TreeNode<>(value, node)); // This combines these three lines: // TreeNode<Integer> newNode = new TreeNode<>(value); //node.setLeft(newNode); //newNode.setParent(node);
-      } else {
+      else
         add(value, node.getLeft());  // go left
-      }
     } else {
-      // System.out.println("Found duplicate value: " + value);
-      // throw new IllegalArgumentException("Dup1icate values not allowed!");
-      node.incrementCount();
+      node.incrementCount(); // System.out.println("Found duplicate value: " + value); // throw new IllegalArgumentException("Dup1icate values not allowed!");
     }
   }
 
@@ -96,6 +95,19 @@ public class LinkedBST implements BinarySearchTree<Integer>{
    */
   public boolean contains(Integer value) {
     return false;
+  }
+
+  private boolean find(Integer value, TreeNode<Integer> node)  {
+    if (node == null)
+      return false;
+
+
+    if (value > node.getValue())
+      find(value, node.getRight());
+    else if (value < node.getValue())
+      find(value, node.getLeft());
+    else
+      return true;
   }
 
   /**
@@ -119,8 +131,7 @@ public class LinkedBST implements BinarySearchTree<Integer>{
     if (node == null)
       return;
     showLVR(node.getLeft()); // L Left
-    //System.out.print(node.getValue() + " "); // V Visit
-    System.out.printf("%d:%d ",node.getValue(),node.getCount());
+    System.out.printf("%d:%d ",node.getValue(),node.getCount()); // V Visit  //System.out.print(node.getValue() + " "); // V Visit
     showLVR(node.getRight()); // R Right
   }
 
@@ -128,8 +139,7 @@ public class LinkedBST implements BinarySearchTree<Integer>{
   private void showVLR(TreeNode<Integer> node) {
     if (node == null)
       return;
-    //System.out.print(node.getValue() + " "); // V Visit
-    System.out.printf("%d:%d ",node.getValue(),node.getCount());
+    System.out.printf("%d:%d ",node.getValue(),node.getCount()); // V Visit  //System.out.print(node.getValue() + " "); // V Visit
     showVLR(node.getLeft()); // L Left
     showVLR(node.getRight()); // R Right
   }
