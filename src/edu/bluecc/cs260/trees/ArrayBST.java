@@ -1,10 +1,25 @@
+/* ************************************************************
+ArrayBST.java
+Created by Kim Miller on 19 December 2019
+CS260 Fall 2019
+
+Description: This program creates a Binary Search Tree using an underlining array data structure, and only accepts Integers.
+
+Client: ArrayBST.java
+Interface: BinarySearchTree<Integer>.java
+
+% java ArrayBST
+
+//Sample Output:
+Is empty?: true
+Is empty?: false
+Contains 15?:  true
+a: 7
+root: 15
+************************************************************ */
+
 package edu.bluecc.cs260.trees;
 
-/**
- * Array implementation of the BinarySearchTree interface. This tree only accepts integers.
- *
- * @author Greg Schulberg
- */
 public class ArrayBST implements BinarySearchTree<Integer> {
 
   public static void main(String[] args) {
@@ -53,6 +68,12 @@ public class ArrayBST implements BinarySearchTree<Integer> {
     add(value, 0);
   }
 
+  /**
+   * This is a helper method to the add(int value) method
+   * This helps with the recursion process (rather than using a loop) to find the location, and add the value
+   * @param value add integer
+   * @param location integer location of the the object
+   */
   private void add(int value, int location) {
     if (a[location] == null) {
       a[location] = value;
@@ -63,8 +84,8 @@ public class ArrayBST implements BinarySearchTree<Integer> {
       add(value, 2 * location + 1); // go left
   }
 
-  //This operation is not supported and will throw an UnsupportedOperationException
    /**
+   * This operation is not supported and will throw an UnsupportedOperationException
    * Remove a value to this tree following the BST algorithm
    * Values to the right of a node are greater than the node value
    * Values to the left of a node are less than the node value
@@ -80,6 +101,13 @@ public class ArrayBST implements BinarySearchTree<Integer> {
     }
   }
 
+  /**
+   * This is the helper method to the remove(Integer value) method
+   * This helps with the recursion process (rather than using a loop) to find the location, and move the values
+   * @param value integer value
+   * @param location integer location of the the object
+   * @return true if removed
+   */
   public boolean remove(int value, int location) {
     System.out.println("a: " + a[location]); // trace
     System.out.println("root: " + root); // trace
